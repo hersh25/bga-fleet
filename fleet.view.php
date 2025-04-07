@@ -33,7 +33,6 @@ class view_fleet_fleet extends game_view
     }    
     function build_page( $viewArgs )
     {		
-        // Get players & players number
         $players = $this->game->loadPlayersBasicInfos();
         $players_nbr = count( $players );
 
@@ -41,7 +40,6 @@ class view_fleet_fleet extends game_view
 
         $players_ordered = $this->game->getPlayersInOrder();
 
-        // Auction block
         $this->page->begin_block("fleet_fleet", "bid");
         foreach($players_ordered as $player_id) {
             $this->page->insert_block("bid", array(
@@ -51,9 +49,7 @@ class view_fleet_fleet extends game_view
             ));
         }
 
-        // Player tableau
         $this->page->begin_block("fleet_fleet", "player");
-        // Current player (different labels)
         $current_player_id = array_shift($players_ordered); // remove current player id
         $this->page->insert_block("player", array(
             "PLAYER_ID" => $current_player_id,
@@ -61,7 +57,6 @@ class view_fleet_fleet extends game_view
             "LABEL_LICENSES" => self::_("My licenses"),
             "LABEL_BOATS" => self::_("My boats"),
         ));
-        // Other players
         foreach ($players_ordered as $player_id) {
             $name = $players[$player_id]['player_name'];
             $this->page->insert_block("player", array(
@@ -72,7 +67,6 @@ class view_fleet_fleet extends game_view
             ));
         }
 
-        // Translations
         $this->tpl['MY_HAND'] = self::_("My hand");
         $this->tpl['AUCTION_LABEL'] = self::_("License Auction");
         $this->tpl['BID_LABEL'] = self::_("Bids");

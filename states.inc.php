@@ -75,8 +75,6 @@ $machinestates = array(
         "transitions" => array( "" => 2 )
     ),
     
-    // All auction states
-    // Bidding and winning handled in client
     STATE_AUCTION => array(
         "name" => "auction",
         "description" => clienttranslate('${actplayer} must bid or pass'),
@@ -85,7 +83,6 @@ $machinestates = array(
         "possibleactions" => array("bid", "buyLicense", "pass"),
         "transitions" => array("" => STATE_NEXT_PLAYER)
     ),
-    // Launch boats, client state for paying
     STATE_LAUNCH => array(
         "name" => "launch",
         "description" => clienttranslate('${actplayer} may launch a boat'),
@@ -94,7 +91,6 @@ $machinestates = array(
         "possibleactions" => array("launchBoat", "pass"),
         "transitions" => array("" => STATE_NEXT_PLAYER)
     ),
-    // Hire captains
     STATE_HIRE => array(
         "name" => "hire",
         "description" => clienttranslate('${actplayer} may hire a captain'),
@@ -103,7 +99,6 @@ $machinestates = array(
         "possibleactions" => array("hireCaptain", "pass"),
         "transitions" => array("" => STATE_NEXT_PLAYER)
     ),
-    // Simultaneous Launch boat & hire captains
     STATE_GAME_LAUNCH_HIRE => array(
         "name" => "gameLaunchHire",
         "type" => "game",
@@ -125,7 +120,6 @@ $machinestates = array(
         "possibleactions" => array("launchBoat", "hireCaptain", "pass"),
         "transitions" => array("" => STATE_NEXT_PLAYER)
     ),
-    // Process and trade fish crates
     STATE_PROCESSING => array(
         "name" => "processing",
         "description" => clienttranslate('Other players may process and trade fish crates'),
@@ -136,7 +130,6 @@ $machinestates = array(
         "possibleactions" => array("processFish", "tradeFish", "pass"),
         "transitions" => array("" => STATE_NEXT_PLAYER)
     ),
-    // Draw and discard
     STATE_DRAW => array(
         "name" => "draw",
         "description" => clienttranslate('Other players must discard a card'),
@@ -146,7 +139,6 @@ $machinestates = array(
         "possibleactions" => array("discard"),
         "transitions" => array("" => STATE_NEXT_PLAYER)
     ),
-    // Transition for all other states to determine next player and end game trigger
     STATE_NEXT_PLAYER => array(
         "name" => "nextPlayer",
         "type" => "game",
@@ -165,7 +157,6 @@ $machinestates = array(
             "finalScore" => STATE_FINAL_SCORE,
         )
     ),
-    // Tally end game bonus points
     STATE_FINAL_SCORE => array(
         "name" => "finalScore",
         "type" => "game",

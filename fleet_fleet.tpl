@@ -12,7 +12,6 @@
 
 
 <div id="flt_game_area">
-    <!-- Table to display end game scoring -->
     <div id="final_score" class="whiteblock" style="display: none;">
         <h3>{FINAL_SCORE}</h3>
         <div id="score_table" class="flt_score_table">
@@ -48,7 +47,6 @@
         </div>
     </div>
 
-    <!-- Player hand and game counters -->
     <div style="display: flex;">
         <div id="myhand_wrap" class="whiteblock" style="flex: 1;">
             <h3>{MY_HAND}</h3>
@@ -72,14 +70,12 @@
         </div>
     </div>
 
-    <!-- All player tables -->
     <div id="playertables">
         <!-- BEGIN player -->
         <div id="playertable_{PLAYER_ID}_wrap" style="display:flex; flex-wrap:wrap">
             <div class="whiteblock flt_player_table">
                 <h3 style="color:#{PLAYER_COLOR};">{LABEL_LICENSES}</h3>
                 <div id="playerlicenses_{PLAYER_ID}" style="display:flex; flex-wrap:wrap">
-                    <!-- put processing (#4) first so processed fish area doesn't move -->
                     <div id="license_{PLAYER_ID}_4" class="flt_license_zone">
                         <div style="border: none;">
                             <div class="flt_fish_player">
@@ -106,7 +102,6 @@
         <!-- END player -->
     </div>
 
-    <!-- Placeholder to move auction down -->
     <div id="auction_bottom"></div>
 
 </div>
@@ -115,7 +110,6 @@
 <script type="text/javascript">
 // Javascript HTML templates
 
-// Launched boat cards with captain and fish overlays
 var jstpl_boat = 
   '<div class="flt_boat_wrap">' +
     '<div class="flt_boat" style="background-position: -${x}px -${y}px;"></div>' +
@@ -124,16 +118,12 @@ var jstpl_boat =
     '<div id="fish_${id}" class="flt_fish_boat"></div>' +
   '</div>';
 
-// Card back for temporary captain animations
 var jstpl_captain = '<div id="tmp_captain_${id}" class="flt_boat flt_captain" style="display:block"></div>';
 
-// Fish cube
 var jstpl_fish = '<div id="fish_${player_id}_${card_id}_${fish_id}" class="flt_icon_fish"></div>';
 
-// Processed fish cube
 var jstpl_pfish = '<div id="${player_id}_fish_${fish_id}" class="flt_icon_fish"></div>';
 
-// Player board icons
 var jstpl_player_board =
     '<div class="flt_board">' +
         '<div id="handcount_icon_p${id}" class="flt_icon_hand imgtext"></div>' +
@@ -148,19 +138,16 @@ var jstpl_player_board =
         '</div>' +
     '</div>';
 
-// License cards
 var jstpl_license_zone =
     '<div id="license_${player_id}_${card_type}_${card_id}" class="flt_license" style="background-position: -${x}px -${y}px;">' +
         '<div class="flt_zone_label">(1)</div>' +
     '</div>';
 var jstpl_license_stock = '<div class="flt_license" style="background-position: -${x}px -${y}px;"></div>';
 
-// Final score table entries
 var jstpl_table_header = '<th>${content}</th>';
 var jstpl_table_cell = '<td>${content}</td>';
 var jstpl_table_row = '<th>${label}</th>${content}';
 
-// Card tootltips
 var jstpl_card_tooltip =
     '<div class="flt_cardtooltip">' +
         '<h3>${name}</h3>' +
